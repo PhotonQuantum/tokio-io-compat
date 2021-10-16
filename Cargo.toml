@@ -1,0 +1,22 @@
+[package]
+name = "tokio-io-compat"
+version = "0.1.0"
+authors = ["LightQuantum <self@lightquantum.me>"]
+edition = "2018"
+description = "Compatibility wrapper around std io traits that implements tokio io traits."
+license = "MIT"
+keywords = ["tokio", "io", "compat", "async"]
+repository = "https://github.com/PhotonQuantum/tokio-io-compat"
+readme = "README.md"
+exclude = [
+    ".github/*",
+    ".gitignore",
+    ".mergify.yml",
+    "rust-toolchain.toml"
+]
+
+[dependencies]
+tokio = { version = "1.12" }
+
+[dev-dependencies]
+tokio = { version = "1.12", features = ["test-util", "io-util", "macros"] }
