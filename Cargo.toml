@@ -1,6 +1,6 @@
 [package]
 name = "tokio-io-compat"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["LightQuantum <self@lightquantum.me>"]
 edition = "2018"
 description = "Compatibility wrapper around std io traits that implements tokio io traits."
