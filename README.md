@@ -10,6 +10,23 @@ implements `tokio::io::{AsyncRead, AsyncWrite, AsyncSeek}`.
 Beware that this won't magically make your IO operations asynchronous.
 You should still consider asyncify your code or move the IO operations to blocking thread if the cost is high.
 
+
+## Deal with `WouldBlock`
+
+If you are trying to wrap a non-blocking IO, it may yield `WouldBlock` errors when data
+is not ready.
+This wrapper will automatically convert `WouldBlock` into `Poll::Pending`.
+
+However, the waker must be waken later to avoid blocking the future.
+By default, it is waken immediately. This may waste excessive CPU cycles, especially when the operation
+is slow.
+
+You may add a delay before each wake by creating the wrapper with `AsyncIoCompat::new_with_delay`.
+If your underlying non-blocking IO has a native poll complete notification mechanism, consider
+writing your own wrapper instead of using this crate.
+
+For reference please see [tokio-tls](https://github.com/tokio-rs/tls/blob/master/tokio-native-tls/src/lib.rs).
+
 ## Example
 
 ```rust
