@@ -16,7 +16,7 @@ exclude = [
 ]
 
 [dependencies]
-tokio = { version = "1.23", features = ["rt", "time"] }
+tokio = { version = "1.24", features = ["rt", "time"] }
 
 [dev-dependencies]
-tokio = { version = "1.23", features = ["test-util", "io-util", "macros"] }
+tokio = { version = "1.24", features = ["test-util", "io-util", "macros"] }
